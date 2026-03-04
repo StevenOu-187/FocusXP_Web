@@ -1,0 +1,17 @@
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\bin\Debug\net10.0\LearningManager.Logic.deps.json
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\bin\Debug\net10.0\LearningManager.Logic.runtimeconfig.json
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\bin\Debug\net10.0\LearningManager.Logic.dll
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\bin\Debug\net10.0\LearningManager.Logic.pdb
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\bin\Debug\net10.0\LearningManager.Common.dll
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\bin\Debug\net10.0\LearningManager.Common.pdb
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\LearningManager.Logic.csproj.AssemblyReference.cache
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\LearningManager.Logic.GeneratedMSBuildEditorConfig.editorconfig
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\LearningManager.Logic.AssemblyInfoInputs.cache
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\LearningManager.Logic.AssemblyInfo.cs
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\LearningManager.Logic.csproj.CoreCompileInputs.cache
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\Learning.95CA1E7F.Up2Date
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\LearningManager.Logic.dll
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\refint\LearningManager.Logic.dll
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\LearningManager.Logic.pdb
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\LearningManager.Logic.genruntimeconfig.cache
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Debug\net10.0\ref\LearningManager.Logic.dll

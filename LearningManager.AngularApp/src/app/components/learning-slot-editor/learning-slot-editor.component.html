@@ -1,0 +1,54 @@
+<div class="lm-page">
+  <h4 style="font-weight:700;color:var(--lm-text);margin-bottom:1.5rem">📊 Lernraster</h4>
+
+  <div *ngIf="loading" class="text-center py-4">
+    <div class="spinner-border" style="color:var(--lm-primary)" role="status"></div>
+  </div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div class="row g-3" *ngIf="!loading">
+    <div class="col-md-6 col-lg-3" *ngFor="let day of days">
+      <div class="lm-card h-100">
+        <div style="font-weight:700;color:var(--lm-primary);margin-bottom:.75rem">{{ day.label }}</div>
+        <div *ngIf="day.slots.length === 0" style="font-size:.85rem;color:var(--lm-muted);margin-bottom:.5rem">Keine Lernblöcke.</div>
+        <div *ngFor="let s of day.slots" class="d-flex justify-content-between align-items-center mb-2">
+          <span style="font-size:.85rem;background:var(--lm-primary-light);color:var(--lm-primary);padding:4px 10px;border-radius:8px;font-weight:600">
+            {{ formatTime(s.startTime) }} – {{ formatTime(s.endTime) }}
+          </span>
+          <button style="border:none;background:none;color:#dc2626;font-size:1rem;cursor:pointer;padding:0 4px" (click)="deleteSlot(day, s)">✕</button>
+        </div>
+
+        <div *ngIf="!day.adding" class="mt-2">
+          <button
+            style="width:100%;border:1.5px dashed var(--lm-primary-mid);background:transparent;color:var(--lm-primary);border-radius:10px;padding:.4rem;font-size:.85rem;cursor:pointer"
+            (click)="day.adding = true">
+            + Block hinzufügen
+          </button>
+        </div>
+
+        <div *ngIf="day.adding" class="mt-2">
+          <div class="row g-1 mb-2">
+            <div class="col">
+              <label style="font-size:.75rem;color:var(--lm-muted)">Von</label>
+              <input type="time" class="form-control form-control-sm" style="border-radius:8px"
+                [(ngModel)]="day.newSlot.startTime" />
+            </div>
+            <div class="col">
+              <label style="font-size:.75rem;color:var(--lm-muted)">Bis</label>
+              <input type="time" class="form-control form-control-sm" style="border-radius:8px"
+                [(ngModel)]="day.newSlot.endTime" />
+            </div>
+          </div>
+          <div class="d-flex gap-1">
+            <button class="btn btn-sm flex-grow-1"
+              style="background:var(--lm-primary);color:#fff;border-radius:8px;font-size:.8rem"
+              (click)="addSlot(day)">Hinzufügen</button>
+            <button class="btn btn-sm"
+              style="background:var(--lm-primary-light);color:var(--lm-primary);border-radius:8px;font-size:.8rem"
+              (click)="day.adding = false">Abbrechen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

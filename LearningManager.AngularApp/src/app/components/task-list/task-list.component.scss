@@ -1,0 +1,19 @@
+// @CustomCode
+
+:host {
+	.table {
+		--bs-table-bg: transparent;
+		--bs-table-color: var(--lm-text);
+		--bs-table-border-color: var(--lm-border);
+		--bs-table-hover-bg: var(--lm-primary-light);
+		--bs-table-hover-color: var(--lm-text);
+		background: transparent;
+		margin-bottom: 0;
+
+		th,
+		td {
+			background: transparent;
+			color: var(--lm-text);
+		}
+	}
+}

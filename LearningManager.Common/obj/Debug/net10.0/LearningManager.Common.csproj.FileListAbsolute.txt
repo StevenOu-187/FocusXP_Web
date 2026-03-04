@@ -1,0 +1,11 @@
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\bin\Debug\net10.0\LearningManager.Common.deps.json
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\bin\Debug\net10.0\LearningManager.Common.dll
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\bin\Debug\net10.0\LearningManager.Common.pdb
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Debug\net10.0\LearningManager.Common.GeneratedMSBuildEditorConfig.editorconfig
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Debug\net10.0\LearningManager.Common.AssemblyInfoInputs.cache
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Debug\net10.0\LearningManager.Common.AssemblyInfo.cs
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Debug\net10.0\LearningManager.Common.csproj.CoreCompileInputs.cache
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Debug\net10.0\LearningManager.Common.dll
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Debug\net10.0\refint\LearningManager.Common.dll
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Debug\net10.0\LearningManager.Common.pdb
+c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Debug\net10.0\ref\LearningManager.Common.dll

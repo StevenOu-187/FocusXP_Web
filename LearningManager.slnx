@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="LearningManager.Common/LearningManager.Common.csproj" />
+  <Project Path="LearningManager.ConApp/LearningManager.ConApp.csproj" />
+  <Project Path="LearningManager.Logic/LearningManager.Logic.csproj" />
+  <Project Path="LearningManager.WebApi/LearningManager.WebApi.csproj" />
+</Solution>

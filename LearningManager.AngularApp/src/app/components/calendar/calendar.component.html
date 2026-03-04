@@ -1,0 +1,69 @@
+<div class="lm-page">
+
+  <!-- Header -->
+  <div class="cal-header">
+    <div class="cal-month-nav">
+      <button (click)="prevMonth()">&#8249;</button>
+      <h2>{{ monthLabel }}</h2>
+      <button (click)="nextMonth()">&#8250;</button>
+      <button class="btn-today" (click)="goToday()">Heute</button>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border" style="color: var(--lm-primary)" role="status"></div>
+  </div>
+
+  <!-- Grid -->
+  <div *ngIf="!loading" class="cal-grid">
+    <!-- Weekday headers -->
+    <div class="cal-weekdays">
+      <div class="cal-wd" *ngFor="let wd of weekdays">{{ wd }}</div>
+    </div>
+
+    <!-- Day cells -->
+    <div class="cal-days">
+      <div
+        *ngFor="let day of flatDays"
+        class="cal-day"
+        [class.other-month]="!day.currentMonth"
+        [class.is-today]="day.isToday"
+        (click)="openDayView(day)"
+      >
+        <div class="cal-day-num">{{ day.dateNum }}</div>
+        <div
+          *ngFor="let e of day.entries"
+          class="cal-entry"
+          [title]="e.taskTitle + ' · ' + formatTime(e.startTime) + '–' + formatTime(e.endTime)"
+        >
+          {{ e.taskTitle }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="dayViewOpen && selectedDay" class="day-modal-backdrop" (click)="closeDayView()">
+    <div class="day-modal" (click)="$event.stopPropagation()">
+      <button class="day-modal-close" type="button" (click)="closeDayView()">×</button>
+
+      <div class="day-modal-header">🗓️ {{ selectedDayTitle }}</div>
+
+      <h4 class="day-modal-section-title">Aufgaben für diesen Tag</h4>
+
+      <div class="day-divider"></div>
+
+      <div *ngIf="selectedDayTasks.length === 0" class="day-empty">
+        📭 Keine Aufgaben für diesen Tag
+      </div>
+
+      <div *ngFor="let item of selectedDayTasks" class="day-entry">
+        <div class="day-time">{{ formatTime(item.entry.startTime) }}–{{ formatTime(item.entry.endTime) }}</div>
+        <div class="day-title">{{ item.entry.taskTitle }}</div>
+        <span class="day-entry-status" [class.done]="item.status === 'Done'">{{ statusLabel(item.status) }}</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+

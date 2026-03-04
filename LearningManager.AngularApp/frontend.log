@@ -1,0 +1,49 @@
+
+> learning-manager.angular-app@0.0.0 start
+> ng serve
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+Application bundle generation failed. [1.908 seconds] - 2026-03-03T12:47:10.988Z
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'viewMode' does not exist on type 'CalendarComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/calendar/calendar.component.html:34:29:
+[37m      34 │         <ng-container *ngIf="[32mviewMode[37m === 'planned'">
+         ╵                              [32m~~~~~~~~[0m
+
+  Error occurs in the template of component CalendarComponent.
+
+    src/app/components/calendar/calendar.component.ts:19:15:
+[37m      19 │   templateUrl: [32m'./calendar.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+Watch mode enabled. Watching for file changes...
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m       [2m | [22m[36m279.55 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m [36m69.15 kB[39m[2m | [22m
+[32mpolyfills.js[39m       [2m | [22m[2mpolyfills[22m    [2m | [22m [36m95 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m348.80 kB[22m
+
+Application bundle generation complete. [0.503 seconds] - 2026-03-03T12:50:07.087Z
+
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m       [2m | [22m[36m279.55 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m [36m69.15 kB[39m[2m | [22m
+[32mpolyfills.js[39m       [2m | [22m[2mpolyfills[22m    [2m | [22m [36m95 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m348.80 kB[22m
+
+Application bundle generation complete. [0.181 seconds] - 2026-03-03T12:51:07.042Z
+
+Component update sent to client(s).
+^C^C

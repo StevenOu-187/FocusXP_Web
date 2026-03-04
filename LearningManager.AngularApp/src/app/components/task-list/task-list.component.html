@@ -1,0 +1,53 @@
+<div class="lm-page">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 style="font-weight:700;color:var(--lm-text)">📋 Aufgaben</h4>
+    <a routerLink="/tasks/new" class="btn btn-sm" style="background:var(--lm-primary);color:#fff;border-radius:10px;font-weight:600;padding:.45rem 1.1rem">+ Neue Aufgabe</a>
+  </div>
+
+  <div *ngIf="loading" class="text-center py-4">
+    <div class="spinner-border" style="color:var(--lm-primary)" role="status"></div>
+  </div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="!loading" class="lm-card">
+    <table class="table table-hover align-middle mb-0">
+      <thead>
+        <tr style="border-bottom:2px solid var(--lm-border)">
+          <th style="color:var(--lm-muted);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em">Titel</th>
+          <th style="color:var(--lm-muted);font-size:.8rem;font-weight:600;text-transform:uppercase">Fällig</th>
+          <th class="text-center" style="color:var(--lm-muted);font-size:.8rem;font-weight:600;text-transform:uppercase">Std.</th>
+          <th class="text-center" style="color:var(--lm-muted);font-size:.8rem;font-weight:600;text-transform:uppercase">Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of tasks" style="border-bottom:1px solid var(--lm-border)">
+          <td>
+            <div style="font-weight:600;color:var(--lm-text)">{{ t.title }}</div>
+            <div style="font-size:.8rem;color:var(--lm-muted)">{{ t.description }}</div>
+          </td>
+          <td style="font-size:.875rem">{{ t.dueDate | date:'dd.MM.yyyy' }}</td>
+          <td class="text-center" style="font-size:.875rem">{{ t.estimatedHours }}</td>
+          <td class="text-center">
+            <span class="status-badge" [ngClass]="t.status === 'Done' ? 'done' : t.status === 'InProgress' ? 'inprogress' : 'open'">
+              {{ statusLabel(t.status) }}
+            </span>
+          </td>
+          <td class="text-end">
+            <button *ngIf="t.status !== 'Done'" class="btn btn-sm me-1"
+              style="background:#dcfce7;color:#166534;border-radius:8px;font-size:.8rem"
+              (click)="markDone(t)">✓ Erledigt</button>
+            <a [routerLink]="['/tasks/edit', t.id]" class="btn btn-sm me-1"
+              style="background:var(--lm-primary-light);color:var(--lm-primary);border-radius:8px;font-size:.8rem">Bearbeiten</a>
+            <button class="btn btn-sm"
+              style="background:#fff0f0;color:#dc2626;border-radius:8px;font-size:.8rem"
+              (click)="delete(t)">Löschen</button>
+          </td>
+        </tr>
+        <tr *ngIf="tasks.length === 0">
+          <td colspan="5" class="text-center py-5" style="color:var(--lm-muted)">Keine Aufgaben vorhanden.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
