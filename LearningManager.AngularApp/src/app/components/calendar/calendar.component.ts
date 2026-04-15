@@ -1,9 +1,11 @@
 // @GeneratedCode
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ScheduleService } from '../../services/http/schedule.service';
 import { TaskItemService } from '../../services/http/task-item.service';
-import { ScheduleEntry, TaskItem } from '../../models/models';
+import { BlockedDayService } from '../../services/http/blocked-day.service';
+import { BlockedDay, ScheduleEntry, TaskItem } from '../../models/models';
 
 interface CalDay {
   date: Date;
@@ -11,12 +13,14 @@ interface CalDay {
   currentMonth: boolean;
   isToday: boolean;
   entries: ScheduleEntry[];
+  isBlocked: boolean;
+  blockedDay: BlockedDay | null;
 }
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss'
 })
@@ -28,8 +32,13 @@ export class CalendarComponent implements OnInit {
   loading = false;
   error = '';
 
+  blockModalOpen = false;
+  blockReason = '';
+  blockSaving = false;
+
   private allEntries: ScheduleEntry[] = [];
   private taskStatusById = new Map<number, TaskItem['status']>();
+  private blockedDays: BlockedDay[] = [];
 
   readonly weekdays = ['MO', 'DI', 'MI', 'DO', 'FR', 'SA', 'SO'];
   readonly monthNames = [
@@ -39,7 +48,8 @@ export class CalendarComponent implements OnInit {
 
   constructor(
     private scheduleService: ScheduleService,
-    private taskService: TaskItemService
+    private taskService: TaskItemService,
+    private blockedDayService: BlockedDayService
   ) {}
 
   ngOnInit(): void { this.load(); }
@@ -73,16 +83,27 @@ export class CalendarComponent implements OnInit {
     const rangeTo      = new Date(rangeFrom);
     rangeTo.setDate(rangeTo.getDate() + 6 * 7 - 1);               // at most 6 weeks visible
 
-    this.scheduleService.getScheduleRange(rangeFrom, rangeTo).subscribe({
-      next: entries => {
-        this.allEntries = entries;
-        this.taskService.getAll().subscribe({
-          next: tasks => {
-            this.taskStatusById = new Map(tasks.map(t => [t.id, t.status] as const));
-            this.buildGrid();
-            this.loading = false;
+    this.blockedDayService.getAll().subscribe({
+      next: blocked => {
+        this.blockedDays = blocked;
+        this.scheduleService.getScheduleRange(rangeFrom, rangeTo).subscribe({
+          next: entries => {
+            this.allEntries = entries;
+            this.taskService.getAll().subscribe({
+              next: tasks => {
+                this.taskStatusById = new Map(tasks.map(t => [t.id, t.status] as const));
+                this.buildGrid();
+                this.loading = false;
+              },
+              error: () => {
+                this.taskStatusById = new Map();
+                this.buildGrid();
+                this.loading = false;
+              }
+            });
           },
           error: () => {
+            this.allEntries = [];
             this.taskStatusById = new Map();
             this.buildGrid();
             this.loading = false;
@@ -90,9 +111,7 @@ export class CalendarComponent implements OnInit {
         });
       },
       error: () => {
-        this.allEntries = [];
-        this.taskStatusById = new Map();
-        this.buildGrid();
+        this.blockedDays = [];
         this.loading = false;
       }
     });
@@ -118,12 +137,16 @@ export class CalendarComponent implements OnInit {
                  eDate.getMonth()    === day.getMonth() &&
                  eDate.getDate()     === day.getDate();
         });
+        const dayIso = this.toIsoDate(day);
+        const blocked = this.blockedDays.find(b => b.date === dayIso) ?? null;
         week.push({
           date: day,
           dateNum: day.getDate(),
           currentMonth: day.getMonth() === month,
           isToday: this.sameDay(day, today),
-          entries: entriesForDay
+          entries: entriesForDay,
+          isBlocked: blocked !== null,
+          blockedDay: blocked
         });
         cursor.setDate(cursor.getDate() + 1);
       }
@@ -148,15 +171,61 @@ export class CalendarComponent implements OnInit {
            a.getDate()     === b.getDate();
   }
 
+  toIsoDate(d: Date): string {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }
+
   formatTime(t: string): string { return t.substring(0, 5); }
 
   openDayView(day: CalDay): void {
     this.selectedDay = day;
     this.dayViewOpen = true;
+    this.blockModalOpen = false;
+    this.blockReason = '';
   }
 
   closeDayView(): void {
     this.dayViewOpen = false;
+  }
+
+  openBlockModal(): void {
+    this.blockReason = this.selectedDay?.blockedDay?.reason ?? '';
+    this.blockModalOpen = true;
+  }
+
+  closeBlockModal(): void {
+    this.blockModalOpen = false;
+  }
+
+  blockDay(): void {
+    if (!this.selectedDay) return;
+    this.blockSaving = true;
+    const dateStr = this.toIsoDate(this.selectedDay.date);
+    this.blockedDayService.create({ date: dateStr, reason: this.blockReason || null }).subscribe({
+      next: () => {
+        this.blockSaving = false;
+        this.blockModalOpen = false;
+        this.dayViewOpen = false;
+        this.load();
+      },
+      error: () => { this.blockSaving = false; }
+    });
+  }
+
+  unblockDay(): void {
+    if (!this.selectedDay?.blockedDay) return;
+    this.blockSaving = true;
+    this.blockedDayService.delete(this.selectedDay.blockedDay.id).subscribe({
+      next: () => {
+        this.blockSaving = false;
+        this.dayViewOpen = false;
+        this.load();
+      },
+      error: () => { this.blockSaving = false; }
+    });
   }
 
   get selectedDayTasks(): Array<{ entry: ScheduleEntry; status: TaskItem['status'] }> {

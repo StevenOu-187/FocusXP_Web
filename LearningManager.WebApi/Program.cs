@@ -16,6 +16,7 @@ builder.Services.AddDbContext<ProjectDbContext>(options =>
 builder.Services.AddScoped<LearningManager.Logic.Services.LearningSlotService>();
 builder.Services.AddScoped<LearningManager.Logic.Services.TaskItemService>();
 builder.Services.AddScoped<LearningManager.Logic.Services.SchedulingService>();
+builder.Services.AddScoped<LearningManager.Logic.Services.BlockedDayService>();
 
 // CORS – allow Angular dev server
 builder.Services.AddCors(options =>

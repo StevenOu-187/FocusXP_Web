@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Steven\\Schule\\Projekte\\Zenos.Web new\\FocusXP_Web\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{906066C1-CC4F-418C-82E4-89984DEDDCAD}|LearningManager.Test\\LearningManager.Test.csproj|c:\\steven\\schule\\projekte\\zenos.web new\\focusxp_web\\learningmanager.test\\learningmanager.test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{906066C1-CC4F-418C-82E4-89984DEDDCAD}|LearningManager.Test\\LearningManager.Test.csproj|solutionrelative:learningmanager.test\\learningmanager.test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{906066C1-CC4F-418C-82E4-89984DEDDCAD}|LearningManager.Test\\LearningManager.Test.csproj|c:\\steven\\schule\\projekte\\zenos.web new\\focusxp_web\\learningmanager.test\\mstestsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{906066C1-CC4F-418C-82E4-89984DEDDCAD}|LearningManager.Test\\LearningManager.Test.csproj|solutionrelative:learningmanager.test\\mstestsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LearningManager.Test",
+              "DocumentMoniker": "C:\\Steven\\Schule\\Projekte\\Zenos.Web new\\FocusXP_Web\\LearningManager.Test\\LearningManager.Test.csproj",
+              "RelativeDocumentMoniker": "LearningManager.Test\\LearningManager.Test.csproj",
+              "ToolTip": "C:\\Steven\\Schule\\Projekte\\Zenos.Web new\\FocusXP_Web\\LearningManager.Test\\LearningManager.Test.csproj",
+              "RelativeToolTip": "LearningManager.Test\\LearningManager.Test.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-15T18:36:35.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MSTestSettings.cs",
+              "DocumentMoniker": "C:\\Steven\\Schule\\Projekte\\Zenos.Web new\\FocusXP_Web\\LearningManager.Test\\MSTestSettings.cs",
+              "RelativeDocumentMoniker": "LearningManager.Test\\MSTestSettings.cs",
+              "ToolTip": "C:\\Steven\\Schule\\Projekte\\Zenos.Web new\\FocusXP_Web\\LearningManager.Test\\MSTestSettings.cs",
+              "RelativeToolTip": "LearningManager.Test\\MSTestSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T18:36:31.17Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

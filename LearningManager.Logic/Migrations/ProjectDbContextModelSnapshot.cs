@@ -17,6 +17,27 @@ namespace LearningManager.Logic.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.3");
 
+            modelBuilder.Entity("LearningManager.Logic.Entities.App.BlockedDay", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Reason")
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Date")
+                        .IsUnique();
+
+                    b.ToTable("BlockedDays");
+                });
+
             modelBuilder.Entity("LearningManager.Logic.Entities.App.LearningSlot", b =>
                 {
                     b.Property<int>("Id")
@@ -67,7 +88,6 @@ namespace LearningManager.Logic.Migrations
 
                     b.ToTable("TaskItems");
                 });
-
 #pragma warning restore 612, 618
         }
     }

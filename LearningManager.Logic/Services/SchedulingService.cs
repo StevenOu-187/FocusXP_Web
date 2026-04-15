@@ -55,6 +55,13 @@ public class SchedulingService
         if (slots.Count == 0 || tasks.Count == 0)
             return [];
 
+        var blockedDates = (await _context.BlockedDays
+            .AsNoTracking()
+            .Where(b => b.Date >= DateOnly.FromDateTime(from) && b.Date <= DateOnly.FromDateTime(to))
+            .Select(b => b.Date)
+            .ToListAsync())
+            .ToHashSet();
+
         // ── 2. Build the ordered list of (date, slot) pairs in the range ─
         var today = DateTime.Today;
         var slotOccurrences = new List<(DateTime Date, LearningSlot Slot)>();
@@ -63,6 +70,9 @@ public class SchedulingService
         {
             // Do not schedule tasks on past days
             if (day < today) continue;
+
+            // Skip blocked days
+            if (blockedDates.Contains(DateOnly.FromDateTime(day))) continue;
 
             // Convert System DayOfWeek (Sun=0) → our convention (Mon=0)
             int ourDow = ((int)day.DayOfWeek + 6) % 7;

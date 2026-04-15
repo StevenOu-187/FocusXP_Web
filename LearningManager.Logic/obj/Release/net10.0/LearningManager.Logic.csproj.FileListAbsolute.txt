@@ -15,3 +15,6 @@ c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Release\net10.
 c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Release\net10.0\LearningManager.Logic.pdb
 c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Release\net10.0\LearningManager.Logic.genruntimeconfig.cache
 c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Logic\obj\Release\net10.0\ref\LearningManager.Logic.dll
+C:\Steven\Schule\Projekte\Zenos.Web new\FocusXP_Web\LearningManager.Logic\obj\Release\net10.0\LearningManager.Logic.dll
+C:\Steven\Schule\Projekte\Zenos.Web new\FocusXP_Web\LearningManager.Logic\obj\Release\net10.0\refint\LearningManager.Logic.dll
+C:\Steven\Schule\Projekte\Zenos.Web new\FocusXP_Web\LearningManager.Logic\obj\Release\net10.0\LearningManager.Logic.pdb

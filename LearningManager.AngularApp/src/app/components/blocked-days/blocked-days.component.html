@@ -1,0 +1,60 @@
+<div class="lm-page">
+  <h4 style="font-weight:700;color:var(--lm-text);margin-bottom:1.5rem">🚫 Blockierte Tage</h4>
+
+  <div *ngIf="loading" class="text-center py-4">
+    <div class="spinner-border" style="color:var(--lm-primary)" role="status"></div>
+  </div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="!loading" class="lm-card" style="max-width:640px">
+
+    <!-- Add form -->
+    <div *ngIf="!adding" class="mb-3">
+      <button
+        style="border:1.5px dashed var(--lm-primary-mid);background:transparent;color:var(--lm-primary);border-radius:10px;padding:.5rem 1.2rem;font-size:.9rem;font-weight:600;cursor:pointer;width:100%"
+        (click)="startAdding()">
+        + Tag blockieren
+      </button>
+    </div>
+
+    <div *ngIf="adding" class="mb-3" style="border:1px solid var(--lm-border);border-radius:12px;padding:1rem">
+      <div *ngIf="formError" class="alert alert-danger py-1 mb-2" style="font-size:.85rem">{{ formError }}</div>
+      <div class="row g-2 mb-2">
+        <div class="col-sm-5">
+          <label style="font-size:.8rem;color:var(--lm-muted);display:block;margin-bottom:.2rem">Datum</label>
+          <input type="date" class="form-control form-control-sm" style="border-radius:8px" [(ngModel)]="newDate" />
+        </div>
+        <div class="col-sm-7">
+          <label style="font-size:.8rem;color:var(--lm-muted);display:block;margin-bottom:.2rem">Grund (optional)</label>
+          <input type="text" class="form-control form-control-sm" style="border-radius:8px"
+            placeholder="z. B. Feiertag, Urlaub, Krank …" [(ngModel)]="newReason" />
+        </div>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-sm flex-grow-1"
+          style="background:var(--lm-primary);color:#fff;border-radius:8px;font-weight:700"
+          (click)="save()" [disabled]="saving">
+          {{ saving ? 'Speichern…' : 'Speichern' }}
+        </button>
+        <button class="btn btn-sm"
+          style="background:var(--lm-primary-light);color:var(--lm-primary);border-radius:8px"
+          (click)="cancelAdding()">Abbrechen</button>
+      </div>
+    </div>
+
+    <!-- List -->
+    <div *ngIf="blockedDays.length === 0 && !adding" style="color:var(--lm-muted);font-size:.9rem;text-align:center;padding:1.5rem 0">
+      Keine blockierten Tage vorhanden.
+    </div>
+
+    <div *ngFor="let day of blockedDays"
+      style="display:flex;align-items:center;gap:.75rem;padding:.65rem 0;border-top:1px solid var(--lm-border)">
+      <span style="font-weight:700;color:var(--lm-text);min-width:110px">{{ formatDate(day.date) }}</span>
+      <span style="flex:1;color:var(--lm-secondary-text);font-size:.9rem">{{ day.reason || '–' }}</span>
+      <button
+        style="border:none;background:none;color:#dc2626;font-size:1.1rem;cursor:pointer;padding:0 4px"
+        (click)="delete(day)"
+        title="Blockierung aufheben">✕</button>
+    </div>
+  </div>
+</div>

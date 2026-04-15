@@ -11,6 +11,7 @@ public class ProjectDbContext : DbContext
 {
     public DbSet<LearningSlot> LearningSlots => Set<LearningSlot>();
     public DbSet<TaskItem> TaskItems => Set<TaskItem>();
+    public DbSet<BlockedDay> BlockedDays => Set<BlockedDay>();
 
     public ProjectDbContext(DbContextOptions<ProjectDbContext> options)
         : base(options)
@@ -41,6 +42,15 @@ public class ProjectDbContext : DbContext
             entity.Property(e => e.EstimatedHours).IsRequired();
             entity.Property(e => e.Status).IsRequired()
                   .HasConversion<string>();
+        });
+
+        // BlockedDay configuration
+        modelBuilder.Entity<BlockedDay>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Date).IsRequired();
+            entity.Property(e => e.Reason).HasMaxLength(200);
+            entity.HasIndex(e => e.Date).IsUnique();
         });
     }
 }

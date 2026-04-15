@@ -36,3 +36,14 @@ export interface ScheduleEntry {
   taskTitle: string;
   taskItemId: number;
 }
+
+export interface BlockedDay {
+  id: number;
+  date: string;
+  reason: string | null;
+}
+
+export interface BlockedDayEdit {
+  date: string;
+  reason: string | null;
+}

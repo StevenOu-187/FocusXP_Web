@@ -9,3 +9,7 @@ c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Release\net10
 c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Release\net10.0\refint\LearningManager.Common.dll
 c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Release\net10.0\LearningManager.Common.pdb
 c:\Steven\Schule\Projekte\Zenos.Web new\LearningManager.Common\obj\Release\net10.0\ref\LearningManager.Common.dll
+C:\Steven\Schule\Projekte\Zenos.Web new\FocusXP_Web\LearningManager.Common\obj\Release\net10.0\LearningManager.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Steven\Schule\Projekte\Zenos.Web new\FocusXP_Web\LearningManager.Common\obj\Release\net10.0\LearningManager.Common.dll
+C:\Steven\Schule\Projekte\Zenos.Web new\FocusXP_Web\LearningManager.Common\obj\Release\net10.0\refint\LearningManager.Common.dll
+C:\Steven\Schule\Projekte\Zenos.Web new\FocusXP_Web\LearningManager.Common\obj\Release\net10.0\LearningManager.Common.pdb

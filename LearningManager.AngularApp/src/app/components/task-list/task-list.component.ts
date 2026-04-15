@@ -17,6 +17,9 @@ export class TaskListComponent implements OnInit {
   loading = false;
   error = '';
 
+  deleteModalOpen = false;
+  taskToDelete: TaskItem | null = null;
+
   constructor(private taskService: TaskItemService) {}
 
   ngOnInit(): void {
@@ -41,10 +44,24 @@ export class TaskListComponent implements OnInit {
   }
 
   delete(task: TaskItem): void {
-    if (!confirm(`Aufgabe "${task.title}" wirklich löschen?`)) return;
-    this.taskService.delete(task.id).subscribe({
-      next: () => { this.tasks = this.tasks.filter(t => t.id !== task.id); }
+    this.taskToDelete = task;
+    this.deleteModalOpen = true;
+  }
+
+  confirmDelete(): void {
+    if (!this.taskToDelete) return;
+    this.taskService.delete(this.taskToDelete.id).subscribe({
+      next: () => {
+        this.tasks = this.tasks.filter(t => t.id !== this.taskToDelete!.id);
+        this.deleteModalOpen = false;
+        this.taskToDelete = null;
+      }
     });
+  }
+
+  cancelDelete(): void {
+    this.deleteModalOpen = false;
+    this.taskToDelete = null;
   }
 
   statusBadgeClass(status: string): string {

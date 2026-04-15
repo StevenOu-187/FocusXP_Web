@@ -1,5 +1,78 @@
 // @CustomCode
 
+.delete-backdrop {
+	position: fixed;
+	inset: 0;
+	background: color-mix(in srgb, #0f172a 40%, transparent);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1050;
+	padding: 1rem;
+}
+
+.delete-modal {
+	background: var(--lm-card);
+	border: 1px solid var(--lm-border);
+	border-radius: 20px;
+	box-shadow: 0 10px 30px var(--lm-shadow);
+	padding: 2rem 2rem 1.75rem;
+	width: min(420px, 100%);
+	text-align: center;
+}
+
+.delete-modal-icon {
+	font-size: 2.5rem;
+	margin-bottom: .75rem;
+}
+
+.delete-modal-title {
+	font-size: 1.25rem;
+	font-weight: 800;
+	color: var(--lm-text);
+	margin-bottom: .5rem;
+}
+
+.delete-modal-body {
+	color: var(--lm-secondary-text);
+	font-size: .95rem;
+	margin-bottom: 1.5rem;
+
+	strong { color: var(--lm-text); }
+}
+
+.delete-modal-actions {
+	display: flex;
+	gap: .75rem;
+	justify-content: center;
+}
+
+.btn-delete-confirm {
+	background: #dc2626;
+	color: #fff;
+	border: none;
+	border-radius: 10px;
+	padding: .55rem 1.5rem;
+	font-weight: 700;
+	font-size: .95rem;
+	cursor: pointer;
+
+	&:hover { background: #b91c1c; }
+}
+
+.btn-delete-cancel {
+	background: var(--lm-border);
+	color: var(--lm-text);
+	border: none;
+	border-radius: 10px;
+	padding: .55rem 1.5rem;
+	font-weight: 600;
+	font-size: .95rem;
+	cursor: pointer;
+
+	&:hover { background: var(--lm-primary-light); }
+}
+
 :host {
 	.table {
 		--bs-table-bg: transparent;

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iiUpxCtSFac=",
+  "dgSpecHash": "JfUNsW6/hM0=",
   "success": true,
-  "projectFilePath": "C:\\Steven\\Schule\\Projekte\\Zenos.Web new\\LearningManager.ConApp\\LearningManager.ConApp.csproj",
+  "projectFilePath": "C:\\Steven\\Schule\\Projekte\\Zenos.Web new\\FocusXP_Web\\LearningManager.ConApp\\LearningManager.ConApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\steve\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.3\\microsoft.data.sqlite.core.10.0.3.nupkg.sha512",
     "C:\\Users\\steve\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.3\\microsoft.entityframeworkcore.10.0.3.nupkg.sha512",

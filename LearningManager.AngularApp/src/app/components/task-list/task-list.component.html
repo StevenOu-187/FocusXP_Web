@@ -50,4 +50,19 @@
       </tbody>
     </table>
   </div>
+
+  <!-- Delete confirmation modal -->
+  <div *ngIf="deleteModalOpen" class="delete-backdrop" (click)="cancelDelete()">
+    <div class="delete-modal" (click)="$event.stopPropagation()">
+      <div class="delete-modal-icon">🗑️</div>
+      <h5 class="delete-modal-title">Aufgabe löschen?</h5>
+      <p class="delete-modal-body">
+        <strong>{{ taskToDelete?.title }}</strong> wird unwiderruflich gelöscht.
+      </p>
+      <div class="delete-modal-actions">
+        <button class="btn-delete-confirm" (click)="confirmDelete()">Löschen</button>
+        <button class="btn-delete-cancel" (click)="cancelDelete()">Abbrechen</button>
+      </div>
+    </div>
+  </div>
 </div>

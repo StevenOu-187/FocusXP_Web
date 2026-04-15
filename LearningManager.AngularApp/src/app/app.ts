@@ -9,11 +9,12 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   template: `
     <header class="lm-navbar">
-      <a class="lm-brand" [routerLink]="['/calendar']">LearningManager</a>
+      <a class="lm-brand" [routerLink]="['/calendar']">FocusXP</a>
       <nav class="lm-nav-links">
-        <a [routerLink]="['/calendar']" routerLinkActive="active">📅 Kalender</a>
-        <a [routerLink]="['/tasks']"    routerLinkActive="active">📋 Aufgaben</a>
-        <a [routerLink]="['/slots']"    routerLinkActive="active">📊 Lernraster</a>
+        <a [routerLink]="['/calendar']"     routerLinkActive="active">📅 Kalender</a>
+        <a [routerLink]="['/tasks']"        routerLinkActive="active">📋 Aufgaben</a>
+        <a [routerLink]="['/slots']"        routerLinkActive="active">📊 Lernraster</a>
+        <a [routerLink]="['/blocked-days']" routerLinkActive="active">🚫 Gesperrt</a>
       </nav>
       <div class="lm-nav-right">
         <button class="lm-dark-toggle" (click)="toggleDark()" [title]="isDark ? 'Light Mode' : 'Dark Mode'">
@@ -47,7 +48,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App implements OnInit {
-  readonly title = 'LearningManager';
+  readonly title = 'FocusXP';
   isDark = false;
   menuOpen = false;
 

@@ -29,9 +29,13 @@
         class="cal-day"
         [class.other-month]="!day.currentMonth"
         [class.is-today]="day.isToday"
+        [class.is-blocked]="day.isBlocked"
         (click)="openDayView(day)"
       >
         <div class="cal-day-num">{{ day.dateNum }}</div>
+        <div *ngIf="day.isBlocked" class="cal-blocked-label" [title]="day.blockedDay?.reason || 'Blockiert'">
+          🚫 {{ day.blockedDay?.reason || 'Blockiert' }}
+        </div>
         <div
           *ngFor="let e of day.entries"
           class="cal-entry"
@@ -49,6 +53,17 @@
 
       <div class="day-modal-header">🗓️ {{ selectedDayTitle }}</div>
 
+      <!-- Blocked-day banner -->
+      <div *ngIf="selectedDay.isBlocked" class="day-blocked-banner">
+        🚫 Dieser Tag ist blockiert<span *ngIf="selectedDay.blockedDay?.reason"> – {{ selectedDay.blockedDay?.reason }}</span>
+        <button class="day-unblock-btn" (click)="unblockDay()" [disabled]="blockSaving">Entsperren</button>
+      </div>
+
+      <!-- Block button (only shown when NOT blocked) -->
+      <div *ngIf="!selectedDay.isBlocked" class="day-block-row">
+        <button class="day-block-btn" (click)="openBlockModal()">🚫 Tag blockieren</button>
+      </div>
+
       <h4 class="day-modal-section-title">Aufgaben für diesen Tag</h4>
 
       <div class="day-divider"></div>
@@ -61,6 +76,40 @@
         <div class="day-time">{{ formatTime(item.entry.startTime) }}–{{ formatTime(item.entry.endTime) }}</div>
         <div class="day-title">{{ item.entry.taskTitle }}</div>
         <span class="day-entry-status" [class.done]="item.status === 'Done'">{{ statusLabel(item.status) }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block-day modal -->
+  <div *ngIf="blockModalOpen" class="day-modal-backdrop" (click)="closeBlockModal()">
+    <div class="day-modal block-modal" (click)="$event.stopPropagation()">
+      <button class="day-modal-close" type="button" (click)="closeBlockModal()">×</button>
+      <div class="day-modal-header">🚫 Tag blockieren</div>
+      <p style="color:var(--lm-secondary-text);margin-bottom:1.2rem">
+        Der Tag <strong>{{ selectedDayTitle }}</strong> wird aus dem Schedule ausgeschlossen.
+      </p>
+      <label style="font-weight:600;color:var(--lm-text);display:block;margin-bottom:.4rem">Grund (optional)</label>
+      <input
+        type="text"
+        class="form-control"
+        style="border-radius:10px;margin-bottom:1.2rem"
+        placeholder="z. B. Feiertag, Urlaub, Krank …"
+        [(ngModel)]="blockReason"
+      />
+      <div class="d-flex gap-2">
+        <button
+          class="btn flex-grow-1"
+          style="background:var(--lm-primary);color:#fff;border-radius:10px;font-weight:700"
+          (click)="blockDay()"
+          [disabled]="blockSaving"
+        >
+          {{ blockSaving ? 'Wird gespeichert…' : 'Blockieren' }}
+        </button>
+        <button
+          class="btn"
+          style="background:var(--lm-border);color:var(--lm-text);border-radius:10px"
+          (click)="closeBlockModal()"
+        >Abbrechen</button>
       </div>
     </div>
   </div>

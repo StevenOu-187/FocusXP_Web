@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "muyg0m3Rp1I=",
+  "dgSpecHash": "xY0XgZZxmuM=",
   "success": true,
-  "projectFilePath": "C:\\Steven\\Schule\\Projekte\\Zenos.Web new\\LearningManager.WebApi\\LearningManager.WebApi.csproj",
+  "projectFilePath": "C:\\Steven\\Schule\\Projekte\\Zenos.Web new\\FocusXP_Web\\LearningManager.WebApi\\LearningManager.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\steve\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\steve\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.3\\microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512",
