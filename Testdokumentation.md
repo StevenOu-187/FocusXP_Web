@@ -1,10 +1,6 @@
 # Testdokumentation – FocusXP / LearningManager
 
 **Projekt:** FocusXP – LearningManager Web  
-**Autor:** Steven  
-**Test Author:** Steven  
-**Tester:** Steven  
-**Test Manager:** Steven  
 **Datum:** 15.04.2026
 
 ---
